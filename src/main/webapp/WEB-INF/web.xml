@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+
+    <servlet>
+        <!--给Servlet程序起一个别名，一般是类名-->
+        <servlet-name>HelloServlet</servlet-name>
+        <!--Servlet程序的全类名-->
+        <servlet-class>com.demo.serverlet.HelloServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <!--告诉服务器我当前配置的地址给哪个Servlet程序用-->
+        <servlet-name>HelloServlet</servlet-name>
+        <!--
+            配置访问地址
+            /斜杠在服务器解析时表示地址为http://ip:port/工程路径
+            /hello表示地址为http://ip:port/工程路径/hello
+        -->
+        <url-pattern>/oppo</url-pattern>
+    </servlet-mapping>
+
+</web-app>
