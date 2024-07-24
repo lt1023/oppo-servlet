@@ -4,7 +4,6 @@ package com.demo.serverlet;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.MessageDigest;
@@ -23,26 +22,116 @@ class Oppo {
 
     }
 
-    static byte[] getTopGmeList(String type) {
+//    static byte[] getRankList(String type) {
+//        String domin = "https://api-cn.store.heytapmobi.com";
+//
+//
+//        try {
+////            String encode = URLEncoder.encode(path, "UTF-8");
+////
+////            System.out.println(encode);
+////            String temp = "%2Fcard%2Fstore%2Fv3%2Fcat%2Fresources%2Falg%2F1%3FsubId%3D0%26start%3D0%26size%3D10%26page_ext%3D304_1%26cid%3D81";
+////
+//
+//            String start = "0";
+//            String size = "10";
+//            String t = "1721636218328";
+//            System.out.println(getSign(start, size, t,type));
+//
+//
+//            System.out.println(getSg(start, size, t, type));
+//
+//            String path = "/card/store/v3/cat/resources/alg/1?subId=0&start=" + start + "&size=" + size + "&page_ext=304_1&cid=81";
+//            String urlPath = domin.concat(path);
+//            System.out.println(urlPath);
+//
+//            URL url = new URL(urlPath);
+//            StringBuffer buffer = new StringBuffer();
+//            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//            conn.setRequestMethod("GET");
+//            conn.setConnectTimeout(15000);
+//            conn.setRequestProperty("User-Agent", "HUAWEI%2FBNE-AL00%2F32%2F12%2FUNKN");
+//            conn.setRequestProperty("Accept", "application/x2-protostuff; charset=UTF-8");
+//            conn.setRequestProperty("Accept-Encoding", "gzip");
+//            conn.setRequestProperty("is_guest_mode", "0");
+//            conn.setRequestProperty("romver", "-1");
+//            conn.setRequestProperty("sign", getSign(start, size, t,type));
+//            conn.setRequestProperty("pid", "001");
+//            conn.setRequestProperty("device_type", "0");
+//            conn.setRequestProperty("trace_ts", "1721634972758");
+//            conn.setRequestProperty("sysua", "Dalvik/2.1.0 (Linux; U; Android 12; BNE-AL00 Build/V417IR)");
+//            conn.setRequestProperty("client-ext-cardstyle", "100");
+//            conn.setRequestProperty("id", "///");
+//            conn.setRequestProperty("ocp", "eduzone#0_webview#4_stat#6_qrcode#0_FloatingAd#1_appupload#0_push#0_network#7_openphone#4_appactivate#1_security#11_download#24_abtest#0_h5preload#3_ui#31_common#11_download2#18_track#0_extEmpower#0");
+//            conn.setRequestProperty("ocs", "HUAWEI%2FBNE-AL00%2F32%2F12%2FUNKNOWN%2F2%2FV417IR+release-keys%2F111502");
+//            conn.setRequestProperty("screen-density", "240");
+//            conn.setRequestProperty("appversion", "11.15.0");
+//            conn.setRequestProperty("l_from", "com.mumu.launcher");
+//            conn.setRequestProperty("pkg-ver", "0");
+//            conn.setRequestProperty("ext-info", "normal");
+//            conn.setRequestProperty("supported-locales", "zh-CN");
+//            conn.setRequestProperty("support", "2=1");
+//            conn.setRequestProperty("cpu-abilist", "x86_64,arm64-v8a,x86,armeabi-v7a,armeabi");
+//            conn.setRequestProperty("user-region", "CN");
+//            conn.setRequestProperty("cdo-gslb", "1");
+//            conn.setRequestProperty("baggage", "ums.e2e_logging.severity=9");
+//            conn.setRequestProperty("cpu-arch", "x86_64");
+//            conn.setRequestProperty("nw", "1");
+//            conn.setRequestProperty("enter-id", "1");
+//            conn.setRequestProperty("locale", "zh-CN;CN");
+//            conn.setRequestProperty("security_guard", "-1");
+//            conn.setRequestProperty("ouid-limit-status", "0");
+//            conn.setRequestProperty("sg", getSg(start, size, t, type));
+//            conn.setRequestProperty("oak", "cdb09c43063ea6bb");
+//            conn.setRequestProperty("dpi", "240");
+//            conn.setRequestProperty("supported-abis", "x86_64,arm64-v8a,x86,armeabi-v7a,armeabi");
+//            conn.setRequestProperty("ch", "2101");
+//            conn.setRequestProperty("component", "111502/2");
+//            conn.setRequestProperty("t", t);
+//            conn.setRequestProperty("client-ext-third-line-activity", "0");
+//            conn.setRequestProperty("t-request-id", "soGJjHyq-1721634978200");
+//            conn.setRequestProperty("traceparent", "00-5ac12b7129424dfad2bdc9838def4fa5-daac4005d2b7addd-00");
+//            conn.setRequestProperty("appid", "HUAWEI#001#CN");
+//            conn.setRequestProperty("compresstool", "zstd-1.5.2-2");
+//            conn.setRequestProperty("pr", "1");
+//            conn.setReadTimeout(5000);
+//            conn.connect();
+//            // 获取状态码
+//            int code = conn.getResponseCode();
+//            if (code == 200) {// 请求成功
+//                // 获取响应消息的实体内容
+////                InputStreamReader reader = new InputStreamReader(
+////                        conn.getInputStream());
+////                char[] charArr = new char[1024 * 8];
+////                int len = 0;
+////                while ((len = reader.read(charArr)) != -1) {
+////                    // 字符数组转字符串
+////                    String str = new String(charArr, 0, len);
+////                    // 在结尾追加字符串
+////                    buffer.append(str);
+////                }
+//                return readFully(conn.getInputStream());
+//
+//            }
+//
+//        } catch (Throwable e2) {
+//            e2.printStackTrace();
+//            System.out.println(e2.getMessage());
+//        }
+//        return null;
+//    }
+    static InputStream getTopGmeListInputStream(String type, String size) {
         String domin = "https://api-cn.store.heytapmobi.com";
 
 
         try {
-//            String encode = URLEncoder.encode(path, "UTF-8");
-//
-//            System.out.println(encode);
-//            String temp = "%2Fcard%2Fstore%2Fv3%2Fcat%2Fresources%2Falg%2F1%3FsubId%3D0%26start%3D0%26size%3D10%26page_ext%3D304_1%26cid%3D81";
-//
 
             String start = "0";
-            String size = "10";
-            String t = "1721636218328";
+            String t = System.currentTimeMillis()+"";
             System.out.println(getSign(start, size, t,type));
-
-
             System.out.println(getSg(start, size, t, type));
 
-            String path = "/card/store/v3/cat/resources/alg/1?subId=0&start=" + start + "&size=" + size + "&page_ext=304_1&cid=81";
+            String path = "/card/store/v3/cat/resources/alg/1?subId=0&start=" + start + "&size=" + size + "&page_ext=304_1&cid=" + type;
             String urlPath = domin.concat(path);
             System.out.println(urlPath);
 
@@ -59,7 +148,7 @@ class Oppo {
             conn.setRequestProperty("sign", getSign(start, size, t,type));
             conn.setRequestProperty("pid", "001");
             conn.setRequestProperty("device_type", "0");
-            conn.setRequestProperty("trace_ts", "1721634972758");
+            conn.setRequestProperty("trace_ts", t);
             conn.setRequestProperty("sysua", "Dalvik/2.1.0 (Linux; U; Android 12; BNE-AL00 Build/V417IR)");
             conn.setRequestProperty("client-ext-cardstyle", "100");
             conn.setRequestProperty("id", "///");
@@ -67,7 +156,8 @@ class Oppo {
             conn.setRequestProperty("ocs", "HUAWEI%2FBNE-AL00%2F32%2F12%2FUNKNOWN%2F2%2FV417IR+release-keys%2F111502");
             conn.setRequestProperty("screen-density", "240");
             conn.setRequestProperty("appversion", "11.15.0");
-            conn.setRequestProperty("l_from", "com.mumu.launcher");
+//            conn.setRequestProperty("l_from", "com.mumu.launcher");
+            conn.setRequestProperty("l_from", "android");
             conn.setRequestProperty("pkg-ver", "0");
             conn.setRequestProperty("ext-info", "normal");
             conn.setRequestProperty("supported-locales", "zh-CN");
@@ -90,8 +180,8 @@ class Oppo {
             conn.setRequestProperty("component", "111502/2");
             conn.setRequestProperty("t", t);
             conn.setRequestProperty("client-ext-third-line-activity", "0");
-            conn.setRequestProperty("t-request-id", "soGJjHyq-1721634978200");
-            conn.setRequestProperty("traceparent", "00-5ac12b7129424dfad2bdc9838def4fa5-daac4005d2b7addd-00");
+            conn.setRequestProperty("t-request-id", "RBBYIrPP-1721787899467");
+            conn.setRequestProperty("traceparent", "00-63842f9ec5ff1e34230112ae89d43ba0-b57c29b1ba2907cb-00");
             conn.setRequestProperty("appid", "HUAWEI#001#CN");
             conn.setRequestProperty("compresstool", "zstd-1.5.2-2");
             conn.setRequestProperty("pr", "1");
@@ -111,7 +201,7 @@ class Oppo {
 //                    // 在结尾追加字符串
 //                    buffer.append(str);
 //                }
-                return readFully(conn.getInputStream());
+                return conn.getInputStream();
 
             }
 
@@ -121,40 +211,46 @@ class Oppo {
         }
         return null;
     }
-    static InputStream getTopGmeListInputStream(String type, String size) {
+    static InputStream getRankList(String type, String size) {
         String domin = "https://api-cn.store.heytapmobi.com";
-
-
         try {
 //            String encode = URLEncoder.encode(path, "UTF-8");
 //
 //            System.out.println(encode);
 //            String temp = "%2Fcard%2Fstore%2Fv3%2Fcat%2Fresources%2Falg%2F1%3FsubId%3D0%26start%3D0%26size%3D10%26page_ext%3D304_1%26cid%3D81";
 //
-
             String start = "0";
 //            String size = "100";
             String t = System.currentTimeMillis()+"";
-            System.out.println(getSign(start, size, t,type));
+
+            ///card/store/v3/subject/50004166?start=0&installRemoval=1&subType=4&size=10&pt=3001
+
+            String path = "/card/store/v3/subject/"+ type +"?start=" + start + "&installRemoval=1&subType=4&size=" + size + "&pt=3001";
+            ///card/store/v3/subject/50004166start=0&installRemoval=1&subType=4&size=10&pt=3001
 
 
-            System.out.println(getSg(start, size, t, type));
 
-            String path = "/card/store/v3/cat/resources/alg/1?subId=0&start=" + start + "&size=" + size + "&page_ext=304_1&cid=" + type;
             String urlPath = domin.concat(path);
             System.out.println(urlPath);
-
+            System.out.println(getSign(t,path));
             URL url = new URL(urlPath);
+
+            path = path.replace("?","");
+
+            System.out.println("sign=" + getSign(t,path));
+
+//            System.out.println(getSg(start, size, t, type));
+
             StringBuffer buffer = new StringBuffer();
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setConnectTimeout(15000);
-            conn.setRequestProperty("User-Agent", "HUAWEI%2FBNE-AL00%2F32%2F12%2FUNKN");
+            conn.setRequestProperty("User-Agent", "HUAWEI%2FBNE-AL00%2F32%2F12%2FUNKNOWN%2F2%2F2101%2F111502%2F11.15.0");
             conn.setRequestProperty("Accept", "application/x2-protostuff; charset=UTF-8");
             conn.setRequestProperty("Accept-Encoding", "gzip");
             conn.setRequestProperty("is_guest_mode", "0");
             conn.setRequestProperty("romver", "-1");
-            conn.setRequestProperty("sign", getSign(start, size, t,type));
+            conn.setRequestProperty("sign", getSign(t,path));
             conn.setRequestProperty("pid", "001");
             conn.setRequestProperty("device_type", "0");
             conn.setRequestProperty("trace_ts", t);
@@ -242,6 +338,23 @@ class Oppo {
         byte[] digest2 = md52.digest();
         StringBuffer stringBuffer2 = getStringBuffer(digest2);
         return stringBuffer2.toString();
+    }
+
+    public static String getSign(String t, String path) throws NoSuchAlgorithmException {
+        MessageDigest md5 = MessageDigest.getInstance("MD5");
+        String key = "cdb09c43063ea6bb08f4fe8a43775179bdc58acb383220be";
+//        System.out.println(key.length());
+        md5.update(key.getBytes());
+        String data = "HUAWEI%2FBNE-AL00%2F32%2F12%2FUNKNOWN%2F2%2FV417IR+release-keys%2F111502" + t + "///"+path;
+        md5.update(data.getBytes());
+//        System.out.println(data.length());
+        int totalLength = key.length() + data.length();
+        String length = String.valueOf(totalLength);
+        md5.update(length.getBytes());
+        md5.update(TOKEN.getBytes());
+        byte[] digest = md5.digest();
+        StringBuffer stringBuffer = getStringBuffer(digest);
+        return stringBuffer.toString();
     }
 
     public static String getSign(String start, String size, String t, String type) throws NoSuchAlgorithmException {

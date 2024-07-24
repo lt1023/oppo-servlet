@@ -1,15 +1,11 @@
 package com.demo.serverlet;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import com.google.gson.Gson;
-import com.heytap.cdo.card.domain.dto.AppListCardDto;
-import com.heytap.cdo.card.domain.dto.ViewLayerWrapDto;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -18,6 +14,7 @@ import jakarta.servlet.annotation.*;
 public class HelloServlet extends HttpServlet {
     private String message;
 
+    //游戏
     private final String TYPE_XX = "81";//休闲益智
     private final String TYPE_MUSIC = "8148";//音乐舞蹈
     private final String TYPE_ROLE_PLAY = "85";//角色扮演
@@ -27,6 +24,22 @@ public class HelloServlet extends HttpServlet {
     private final String TYPE_POKER = "82";//棋牌
     private final String TYPE_SHOT = "8137";//射击游戏
     private final String TYPE_OTHER = "8126";//特色分类
+
+
+
+
+    //排行榜
+
+    private final String TYPE_RANK_TOP = "50004166";//热门榜
+    private final String TYPE_RANK_NEW_GAME = "50004167";//新游榜
+    private final String TYPE_RANK_SALE = "50004200";//畅销榜
+//    private final String TYPE_RANK_CATEGORY = "50004170";//经营策略
+//    private final String TYPE_RANK_XX = "50004171";//休闲益智
+//    private final String TYPE_RANK_SHOT = "50004172";//射击游戏
+//    private final String TYPE_RANK_ACTION = "50004173";//动作冒险
+    private final String TYPE_RANK_POKER = "50004174";//棋牌游戏
+//    private final String TYPE_RANK_ROLE = "50004175";//角色扮演
+    private final String TYPE_RANK_BOOKING = "50004214";//预约榜
 
     public void init() {
         message = "Hello World!!!!";
@@ -59,6 +72,7 @@ public class HelloServlet extends HttpServlet {
                     String[] split = queryString.split("&");
                     String type = null;
                     String size = null;
+                    String page = null;
                     for (String query : split) {
                         if (query.contains("type=")) {
                             type = query.split("type=")[1];
@@ -66,11 +80,18 @@ public class HelloServlet extends HttpServlet {
                         if (query.contains("size=")) {
                             size = query.split("size=")[1];
                         }
+                        if (query.contains("page=")) {
+                            page = query.split("page=")[1];
+                        }
                     }
                     System.out.println("type=" + type);
                     System.out.println("size=" + size);
                     if (type != null && size != null) {
-                        startQuery(response, type, size);
+                        if (Objects.equals(page, "0")) {
+                            startQuery(response, type, size);
+                        } else if (Objects.equals(page, "1")) {
+                            startQueryRankList(response, type, size);
+                        }
                         return;
                     }
                 }
@@ -82,20 +103,23 @@ public class HelloServlet extends HttpServlet {
 //        out.println(new Gson().toJson(gameBeanList));
     }
 
-    private static void startQuery(HttpServletResponse response, String type, String size) throws IOException {
-        List<GameBean> gameBeanList = new ArrayList<>();
+    private static void startQueryRankList(HttpServletResponse response, String type, String size) throws IOException {
+        InputStream rankList = Oppo.getRankList(type.strip(), size.strip());
+        System.out.println(rankList);
+        if (rankList == null) return;
+        deseriliseData(response, rankList);
+    }
 
-        InputStream gmeList = Oppo.getTopGmeListInputStream(type.strip(), size.strip());
-        assert gmeList != null;
-
-        AppListCardDtoP.ViewLayerWrapDto parsedFrom = AppListCardDtoP.ViewLayerWrapDto.parseFrom(gmeList);
+    private static void deseriliseData(HttpServletResponse response, InputStream rankList) throws IOException {
+        AppListCardDtoP.ViewLayerWrapDto parsedFrom = AppListCardDtoP.ViewLayerWrapDto.parseFrom(rankList);
 
         PrintWriter out = response.getWriter();
 //        out.println("<html><body>");
 //        out.println("<h1> getIsEnd=" + parsedFrom.getIsEnd() + "</h1>");
+        List<GameBean> gameBeanList = new ArrayList<>();
 
         List<AppListCardDtoP.CardDto> cardsList = parsedFrom.getCardsList();
-        System.out.println("cardsList="+cardsList.size());
+        System.out.println("cardsList=" + cardsList.size());
         for (AppListCardDtoP.CardDto cardDto : cardsList) {
 
             List<AppListCardDtoP.ResourceDto> appsList = cardDto.getAppsList();
@@ -134,6 +158,61 @@ public class HelloServlet extends HttpServlet {
         }
 //        out.println("</body></html>");
         out.println(new Gson().toJson(gameBeanList));
+    }
+
+    private static void startQuery(HttpServletResponse response, String type, String size) throws IOException {
+//        List<GameBean> gameBeanList = new ArrayList<>();
+
+        InputStream gmeList = Oppo.getTopGmeListInputStream(type.strip(), size.strip());
+        deseriliseData(response, gmeList);
+//        assert gmeList != null;
+
+//        AppListCardDtoP.ViewLayerWrapDto parsedFrom = AppListCardDtoP.ViewLayerWrapDto.parseFrom(gmeList);
+//
+//        PrintWriter out = response.getWriter();
+////        out.println("<html><body>");
+////        out.println("<h1> getIsEnd=" + parsedFrom.getIsEnd() + "</h1>");
+//
+//        List<AppListCardDtoP.CardDto> cardsList = parsedFrom.getCardsList();
+//        System.out.println("cardsList=" + cardsList.size());
+//        for (AppListCardDtoP.CardDto cardDto : cardsList) {
+//
+//            List<AppListCardDtoP.ResourceDto> appsList = cardDto.getAppsList();
+//            for (AppListCardDtoP.ResourceDto app : appsList) {
+//                GameBean bean = new GameBean();
+//                bean.setDevName("");
+//                bean.setUpdateTime("");
+//                bean.setGameName(app.getAppName());
+//                bean.setIcon(app.getIconUrl());
+//                bean.setGrade(app.getGrade() + "");
+//                bean.setDownloadUrl(app.getUrl());
+//                bean.setSize(app.getSizeDesc());
+//                bean.setTag(app.getShortDesc());
+//                bean.setInstallTimes(app.getDlCount() + "");
+//                gameBeanList.add(bean);
+//
+//            }
+////            List<AppListCardDtoP.ResourceDto> multipleAppsList = cardDto.getMultipleAppsList();
+////            System.out.println("multipleAppsList="+multipleAppsList.size());
+//
+////            for (AppListCardDtoP.ResourceDto appInheritDto: multipleAppsList){
+////                try {
+////                    bean.setDevName("");
+////                    bean.setUpdateTime("");
+////                    bean.setGameName(appInheritDto.getAppName());
+////                    bean.setIcon(appInheritDto.getIconUrl());
+////                    bean.setGrade(appInheritDto.getGrade() + "");
+////                    bean.setDownloadUrl(appInheritDto.getUrl());
+////                    bean.setSize(appInheritDto.getSizeDesc());
+////                    bean.setTag(appInheritDto.getShortDesc());
+////                    bean.setInstallTimes(appInheritDto.getDlCount() + "");
+////                }catch (Throwable throwable){}
+////
+////            }
+//
+//        }
+////        out.println("</body></html>");
+//        out.println(new Gson().toJson(gameBeanList));
     }
 
     @Override
