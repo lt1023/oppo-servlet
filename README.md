@@ -12,8 +12,16 @@ IP+端口模式
 
 
 
-将war解压放于项目根目录
+1.将war解压放于项目根目录
 
 复制到/www/server/bt_tomcat_web/oppo.com/webapps/xxx
 
 重启tomcat 和项目即可
+
+
+
+
+
+
+
+2.打包war，放于项目域名下即可
