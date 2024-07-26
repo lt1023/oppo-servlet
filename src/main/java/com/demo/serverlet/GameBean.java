@@ -15,7 +15,37 @@ public class GameBean {
     private String updateTime;//更新时间
     private String tag;
     private long appId;
+
     private String pkgName;
+    private String verName;//版本号
+
+    private long verCode;//版本code
+
+    private List<String> screenshots;//截图
+
+    public String getVerName() {
+        return verName;
+    }
+
+    public void setVerName(String verName) {
+        this.verName = verName;
+    }
+
+    public long getVerCode() {
+        return verCode;
+    }
+
+    public void setVerCode(long verCode) {
+        this.verCode = verCode;
+    }
+
+    public List<String> getScreenshots() {
+        return screenshots;
+    }
+
+    public void setScreenshots(List<String> screenshots) {
+        this.screenshots = screenshots;
+    }
 
     public long getAppId() {
         return appId;

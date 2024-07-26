@@ -128,12 +128,12 @@ class Oppo {
 
             String start = "0";
             String t = System.currentTimeMillis()+"";
-            System.out.println(getSign(start, size, t,type));
-            System.out.println(getSg(start, size, t, type));
+//            System.out.println(getSign(start, size, t,type));
+//            System.out.println(getSg(start, size, t, type));
 
             String path = "/card/store/v3/cat/resources/alg/1?subId=0&start=" + start + "&size=" + size + "&page_ext=304_1&cid=" + type;
             String urlPath = domin.concat(path);
-            System.out.println(urlPath);
+//            System.out.println(urlPath);
 
             URL url = new URL(urlPath);
             StringBuffer buffer = new StringBuffer();
@@ -231,13 +231,13 @@ class Oppo {
 
 
             String urlPath = domin.concat(path);
-            System.out.println(urlPath);
-            System.out.println(getSign(t,path));
+//            System.out.println(urlPath);
+//            System.out.println(getSign(t,path));
             URL url = new URL(urlPath);
 
             path = path.replace("?","");
 
-            System.out.println("sign=" + getSign(t,path));
+//            System.out.println("sign=" + getSign(t,path));
 
 //            System.out.println(getSg(start, size, t, type));
 
@@ -333,7 +333,7 @@ class Oppo {
         MessageDigest md52 = MessageDigest.getInstance("SHA1");
 //        String sgData = "%2fcard%2fstore%2fv3%2fcat%2fresources%2falg%2f1subid%3d0%26start%3d" + start + "%26size%3d" + size + "%26page_ext%3d304_1%26cid%3d"  + type+ "application/x2-protostuff; charset=utf-8get///" + t + "c5ca81b0391663db0ca3e6b70c4e0fc4cf53ead33d158e83218";
         String sgData = "%2fcard%2fstore%2fv3%2fcat%2fresources%2falg%2f1subid%3d0%26start%3d" + start + "%26size%3d" + size + "%26page_ext%3d304_1%26cid%3d"  + type+ "application/x2-protostuff; charset=utf-8get///" + t + "cab2f5d94d4eea71d9275c219e852eb5e60cb5ceccd523b5218";
-        System.out.println(sgData);
+//        System.out.println(sgData);
         md52.update(sgData.getBytes());
         byte[] digest2 = md52.digest();
         StringBuffer stringBuffer2 = getStringBuffer(digest2);

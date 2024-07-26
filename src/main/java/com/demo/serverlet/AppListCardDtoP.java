@@ -5301,6 +5301,40 @@ public final class AppListCardDtoP {
      * <code>optional int64 appId = 1;</code>
      */
     long getAppId();
+
+    /**
+     * <code>optional int64 verCode = 9;</code>
+     */
+    long getVerCode();
+
+    /**
+     * <code>repeated string screenshots = 32;</code>
+     */
+    com.google.protobuf.ProtocolStringList
+        getScreenshotsList();
+    /**
+     * <code>repeated string screenshots = 32;</code>
+     */
+    int getScreenshotsCount();
+    /**
+     * <code>repeated string screenshots = 32;</code>
+     */
+    java.lang.String getScreenshots(int index);
+    /**
+     * <code>repeated string screenshots = 32;</code>
+     */
+    com.google.protobuf.ByteString
+        getScreenshotsBytes(int index);
+
+    /**
+     * <code>optional string verName = 8;</code>
+     */
+    java.lang.String getVerName();
+    /**
+     * <code>optional string verName = 8;</code>
+     */
+    com.google.protobuf.ByteString
+        getVerNameBytes();
   }
   /**
    * Protobuf type {@code ResourceDto}
@@ -5325,6 +5359,9 @@ public final class AppListCardDtoP {
       dlCount_ = 0L;
       grade_ = 0F;
       appId_ = 0L;
+      verCode_ = 0L;
+      screenshots_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      verName_ = "";
     }
 
     @java.lang.Override
@@ -5369,6 +5406,17 @@ public final class AppListCardDtoP {
               pkgName_ = s;
               break;
             }
+            case 66: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              verName_ = s;
+              break;
+            }
+            case 72: {
+
+              verCode_ = input.readInt64();
+              break;
+            }
             case 90: {
               java.lang.String s = input.readStringRequireUtf8();
 
@@ -5409,6 +5457,15 @@ public final class AppListCardDtoP {
               desc_ = s;
               break;
             }
+            case 258: {
+              java.lang.String s = input.readStringRequireUtf8();
+              if (!((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
+                screenshots_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00001000;
+              }
+              screenshots_.add(s);
+              break;
+            }
             case 266: {
               java.lang.String s = input.readStringRequireUtf8();
 
@@ -5423,6 +5480,9 @@ public final class AppListCardDtoP {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
+          screenshots_ = screenshots_.getUnmodifiableView();
+        }
         makeExtensionsImmutable();
       }
     }
@@ -5438,6 +5498,7 @@ public final class AppListCardDtoP {
               com.demo.serverlet.AppListCardDtoP.ResourceDto.class, com.demo.serverlet.AppListCardDtoP.ResourceDto.Builder.class);
     }
 
+    private int bitField0_;
     public static final int APPNAME_FIELD_NUMBER = 3;
     private volatile java.lang.Object appName_;
     /**
@@ -5737,6 +5798,78 @@ public final class AppListCardDtoP {
       return appId_;
     }
 
+    public static final int VERCODE_FIELD_NUMBER = 9;
+    private long verCode_;
+    /**
+     * <code>optional int64 verCode = 9;</code>
+     */
+    public long getVerCode() {
+      return verCode_;
+    }
+
+    public static final int SCREENSHOTS_FIELD_NUMBER = 32;
+    private com.google.protobuf.LazyStringList screenshots_;
+    /**
+     * <code>repeated string screenshots = 32;</code>
+     */
+    public com.google.protobuf.ProtocolStringList
+        getScreenshotsList() {
+      return screenshots_;
+    }
+    /**
+     * <code>repeated string screenshots = 32;</code>
+     */
+    public int getScreenshotsCount() {
+      return screenshots_.size();
+    }
+    /**
+     * <code>repeated string screenshots = 32;</code>
+     */
+    public java.lang.String getScreenshots(int index) {
+      return screenshots_.get(index);
+    }
+    /**
+     * <code>repeated string screenshots = 32;</code>
+     */
+    public com.google.protobuf.ByteString
+        getScreenshotsBytes(int index) {
+      return screenshots_.getByteString(index);
+    }
+
+    public static final int VERNAME_FIELD_NUMBER = 8;
+    private volatile java.lang.Object verName_;
+    /**
+     * <code>optional string verName = 8;</code>
+     */
+    public java.lang.String getVerName() {
+      java.lang.Object ref = verName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        verName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string verName = 8;</code>
+     */
+    public com.google.protobuf.ByteString
+        getVerNameBytes() {
+      java.lang.Object ref = verName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        verName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -5757,6 +5890,12 @@ public final class AppListCardDtoP {
       }
       if (!getPkgNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessage.writeString(output, 7, pkgName_);
+      }
+      if (!getVerNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 8, verName_);
+      }
+      if (verCode_ != 0L) {
+        output.writeInt64(9, verCode_);
       }
       if (!getSizeDescBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessage.writeString(output, 11, sizeDesc_);
@@ -5779,6 +5918,9 @@ public final class AppListCardDtoP {
       if (!getDescBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessage.writeString(output, 27, desc_);
       }
+      for (int i = 0; i < screenshots_.size(); i++) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 32, screenshots_.getRaw(i));
+      }
       if (!getBgBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessage.writeString(output, 33, bg_);
       }
@@ -5798,6 +5940,13 @@ public final class AppListCardDtoP {
       }
       if (!getPkgNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(7, pkgName_);
+      }
+      if (!getVerNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(8, verName_);
+      }
+      if (verCode_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(9, verCode_);
       }
       if (!getSizeDescBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(11, sizeDesc_);
@@ -5821,6 +5970,14 @@ public final class AppListCardDtoP {
       }
       if (!getDescBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(27, desc_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < screenshots_.size(); i++) {
+          dataSize += computeStringSizeNoTag(screenshots_.getRaw(i));
+        }
+        size += dataSize;
+        size += 2 * getScreenshotsList().size();
       }
       if (!getBgBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(33, bg_);
@@ -5964,6 +6121,12 @@ public final class AppListCardDtoP {
 
         appId_ = 0L;
 
+        verCode_ = 0L;
+
+        screenshots_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00001000);
+        verName_ = "";
+
         return this;
       }
 
@@ -5986,6 +6149,8 @@ public final class AppListCardDtoP {
 
       public com.demo.serverlet.AppListCardDtoP.ResourceDto buildPartial() {
         com.demo.serverlet.AppListCardDtoP.ResourceDto result = new com.demo.serverlet.AppListCardDtoP.ResourceDto(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
         result.appName_ = appName_;
         result.bg_ = bg_;
         result.desc_ = desc_;
@@ -5997,6 +6162,14 @@ public final class AppListCardDtoP {
         result.dlCount_ = dlCount_;
         result.grade_ = grade_;
         result.appId_ = appId_;
+        result.verCode_ = verCode_;
+        if (((bitField0_ & 0x00001000) == 0x00001000)) {
+          screenshots_ = screenshots_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00001000);
+        }
+        result.screenshots_ = screenshots_;
+        result.verName_ = verName_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -6053,6 +6226,23 @@ public final class AppListCardDtoP {
         if (other.getAppId() != 0L) {
           setAppId(other.getAppId());
         }
+        if (other.getVerCode() != 0L) {
+          setVerCode(other.getVerCode());
+        }
+        if (!other.screenshots_.isEmpty()) {
+          if (screenshots_.isEmpty()) {
+            screenshots_ = other.screenshots_;
+            bitField0_ = (bitField0_ & ~0x00001000);
+          } else {
+            ensureScreenshotsIsMutable();
+            screenshots_.addAll(other.screenshots_);
+          }
+          onChanged();
+        }
+        if (!other.getVerName().isEmpty()) {
+          verName_ = other.verName_;
+          onChanged();
+        }
         onChanged();
         return this;
       }
@@ -6078,6 +6268,7 @@ public final class AppListCardDtoP {
         }
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object appName_ = "";
       /**
@@ -6705,6 +6896,195 @@ public final class AppListCardDtoP {
       public Builder clearAppId() {
         
         appId_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long verCode_ ;
+      /**
+       * <code>optional int64 verCode = 9;</code>
+       */
+      public long getVerCode() {
+        return verCode_;
+      }
+      /**
+       * <code>optional int64 verCode = 9;</code>
+       */
+      public Builder setVerCode(long value) {
+        
+        verCode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 verCode = 9;</code>
+       */
+      public Builder clearVerCode() {
+        
+        verCode_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.LazyStringList screenshots_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureScreenshotsIsMutable() {
+        if (!((bitField0_ & 0x00001000) == 0x00001000)) {
+          screenshots_ = new com.google.protobuf.LazyStringArrayList(screenshots_);
+          bitField0_ |= 0x00001000;
+         }
+      }
+      /**
+       * <code>repeated string screenshots = 32;</code>
+       */
+      public com.google.protobuf.ProtocolStringList
+          getScreenshotsList() {
+        return screenshots_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string screenshots = 32;</code>
+       */
+      public int getScreenshotsCount() {
+        return screenshots_.size();
+      }
+      /**
+       * <code>repeated string screenshots = 32;</code>
+       */
+      public java.lang.String getScreenshots(int index) {
+        return screenshots_.get(index);
+      }
+      /**
+       * <code>repeated string screenshots = 32;</code>
+       */
+      public com.google.protobuf.ByteString
+          getScreenshotsBytes(int index) {
+        return screenshots_.getByteString(index);
+      }
+      /**
+       * <code>repeated string screenshots = 32;</code>
+       */
+      public Builder setScreenshots(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureScreenshotsIsMutable();
+        screenshots_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string screenshots = 32;</code>
+       */
+      public Builder addScreenshots(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureScreenshotsIsMutable();
+        screenshots_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string screenshots = 32;</code>
+       */
+      public Builder addAllScreenshots(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureScreenshotsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, screenshots_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string screenshots = 32;</code>
+       */
+      public Builder clearScreenshots() {
+        screenshots_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00001000);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string screenshots = 32;</code>
+       */
+      public Builder addScreenshotsBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        ensureScreenshotsIsMutable();
+        screenshots_.add(value);
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object verName_ = "";
+      /**
+       * <code>optional string verName = 8;</code>
+       */
+      public java.lang.String getVerName() {
+        java.lang.Object ref = verName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          verName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string verName = 8;</code>
+       */
+      public com.google.protobuf.ByteString
+          getVerNameBytes() {
+        java.lang.Object ref = verName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          verName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string verName = 8;</code>
+       */
+      public Builder setVerName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        verName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string verName = 8;</code>
+       */
+      public Builder clearVerName() {
+        
+        verName_ = getDefaultInstance().getVerName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string verName = 8;</code>
+       */
+      public Builder setVerNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        verName_ = value;
         onChanged();
         return this;
       }
@@ -8372,18 +8752,19 @@ public final class AppListCardDtoP {
       "s\030g \003(\0132\014.ResourceDto\022\027\n\017backgroundImage" +
       "\030j \001(\t\022\014\n\004desc\030f \001(\t\022\014\n\004icon\030i \001(\t\022\r\n\005la" +
       "bel\030m \001(\t\022\"\n\014multipleApps\030k \003(\0132\014.Resour" +
-      "ceDto\022\r\n\005title\030e \001(\t\"\273\001\n\013ResourceDto\022\017\n\007" +
+      "ceDto\022\r\n\005title\030e \001(\t\"\362\001\n\013ResourceDto\022\017\n\007" +
       "appName\030\003 \001(\t\022\n\n\002bg\030! \001(\t\022\014\n\004desc\030\033 \001(\t\022" +
       "\017\n\007iconUrl\030\016 \001(\t\022\017\n\007pkgName\030\007 \001(\t\022\021\n\tsho",
       "rtDesc\030\032 \001(\t\022\020\n\010sizeDesc\030\013 \001(\t\022\013\n\003url\030\026 " +
       "\001(\t\022\017\n\007dlCount\030\017 \001(\003\022\r\n\005grade\030\022 \001(\002\022\r\n\005a" +
-      "ppId\030\001 \001(\003\"\312\001\n\rAppInheritDto\022\017\n\007appName\030" +
-      "\003 \001(\t\022\n\n\002bg\030! \001(\t\022\014\n\004desc\030\033 \001(\t\022\017\n\007iconU" +
-      "rl\030\016 \001(\t\022\017\n\007pkgName\030\007 \001(\t\022\021\n\tshortDesc\030\032" +
-      " \001(\t\022\020\n\010sizeDesc\030\013 \001(\t\022\013\n\003url\030\026 \001(\t\022\017\n\007d" +
-      "lCount\030\017 \001(\003\022\r\n\005grade\030\022 \001(\002\022\032\n\021cooperate" +
-      "GameType\030\314\010 \001(\005B\024\n\022com.demo.serverletb\006p" +
-      "roto3"
+      "ppId\030\001 \001(\003\022\017\n\007verCode\030\t \001(\003\022\023\n\013screensho" +
+      "ts\030  \003(\t\022\017\n\007verName\030\010 \001(\t\"\312\001\n\rAppInherit" +
+      "Dto\022\017\n\007appName\030\003 \001(\t\022\n\n\002bg\030! \001(\t\022\014\n\004desc" +
+      "\030\033 \001(\t\022\017\n\007iconUrl\030\016 \001(\t\022\017\n\007pkgName\030\007 \001(\t" +
+      "\022\021\n\tshortDesc\030\032 \001(\t\022\020\n\010sizeDesc\030\013 \001(\t\022\013\n" +
+      "\003url\030\026 \001(\t\022\017\n\007dlCount\030\017 \001(\003\022\r\n\005grade\030\022 \001" +
+      "(\002\022\032\n\021cooperateGameType\030\314\010 \001(\005B\024\n\022com.de" +
+      "mo.serverletb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -8432,7 +8813,7 @@ public final class AppListCardDtoP {
     internal_static_ResourceDto_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ResourceDto_descriptor,
-        new java.lang.String[] { "AppName", "Bg", "Desc", "IconUrl", "PkgName", "ShortDesc", "SizeDesc", "Url", "DlCount", "Grade", "AppId", });
+        new java.lang.String[] { "AppName", "Bg", "Desc", "IconUrl", "PkgName", "ShortDesc", "SizeDesc", "Url", "DlCount", "Grade", "AppId", "VerCode", "Screenshots", "VerName", });
     internal_static_AppInheritDto_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_AppInheritDto_fieldAccessorTable = new
