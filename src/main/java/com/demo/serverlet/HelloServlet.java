@@ -134,6 +134,8 @@ public class HelloServlet extends HttpServlet {
                 bean.setSize(app.getSizeDesc());
                 bean.setTag(app.getShortDesc());
                 bean.setInstallTimes(app.getDlCount() + "");
+                bean.setAppId(app.getAppId());
+                bean.setPkgName(app.getPkgName());
                 gameBeanList.add(bean);
 
             }

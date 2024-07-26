@@ -14,6 +14,24 @@ public class GameBean {
 
     private String updateTime;//更新时间
     private String tag;
+    private long appId;
+    private String pkgName;
+
+    public long getAppId() {
+        return appId;
+    }
+
+    public void setAppId(long appId) {
+        this.appId = appId;
+    }
+
+    public String getPkgName() {
+        return pkgName;
+    }
+
+    public void setPkgName(String pkgName) {
+        this.pkgName = pkgName;
+    }
 
     public String getGameName() {
         return gameName;

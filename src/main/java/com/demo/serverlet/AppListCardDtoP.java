@@ -5296,6 +5296,11 @@ public final class AppListCardDtoP {
      * <code>optional float grade = 18;</code>
      */
     float getGrade();
+
+    /**
+     * <code>optional int64 appId = 1;</code>
+     */
+    long getAppId();
   }
   /**
    * Protobuf type {@code ResourceDto}
@@ -5319,6 +5324,7 @@ public final class AppListCardDtoP {
       url_ = "";
       dlCount_ = 0L;
       grade_ = 0F;
+      appId_ = 0L;
     }
 
     @java.lang.Override
@@ -5344,6 +5350,11 @@ public final class AppListCardDtoP {
               if (!input.skipField(tag)) {
                 done = true;
               }
+              break;
+            }
+            case 8: {
+
+              appId_ = input.readInt64();
               break;
             }
             case 26: {
@@ -5717,6 +5728,15 @@ public final class AppListCardDtoP {
       return grade_;
     }
 
+    public static final int APPID_FIELD_NUMBER = 1;
+    private long appId_;
+    /**
+     * <code>optional int64 appId = 1;</code>
+     */
+    public long getAppId() {
+      return appId_;
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -5729,6 +5749,9 @@ public final class AppListCardDtoP {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (appId_ != 0L) {
+        output.writeInt64(1, appId_);
+      }
       if (!getAppNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessage.writeString(output, 3, appName_);
       }
@@ -5766,6 +5789,10 @@ public final class AppListCardDtoP {
       if (size != -1) return size;
 
       size = 0;
+      if (appId_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, appId_);
+      }
       if (!getAppNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(3, appName_);
       }
@@ -5935,6 +5962,8 @@ public final class AppListCardDtoP {
 
         grade_ = 0F;
 
+        appId_ = 0L;
+
         return this;
       }
 
@@ -5967,6 +5996,7 @@ public final class AppListCardDtoP {
         result.url_ = url_;
         result.dlCount_ = dlCount_;
         result.grade_ = grade_;
+        result.appId_ = appId_;
         onBuilt();
         return result;
       }
@@ -6019,6 +6049,9 @@ public final class AppListCardDtoP {
         }
         if (other.getGrade() != 0F) {
           setGrade(other.getGrade());
+        }
+        if (other.getAppId() != 0L) {
+          setAppId(other.getAppId());
         }
         onChanged();
         return this;
@@ -6646,6 +6679,32 @@ public final class AppListCardDtoP {
       public Builder clearGrade() {
         
         grade_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      private long appId_ ;
+      /**
+       * <code>optional int64 appId = 1;</code>
+       */
+      public long getAppId() {
+        return appId_;
+      }
+      /**
+       * <code>optional int64 appId = 1;</code>
+       */
+      public Builder setAppId(long value) {
+        
+        appId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 appId = 1;</code>
+       */
+      public Builder clearAppId() {
+        
+        appId_ = 0L;
         onChanged();
         return this;
       }
@@ -8313,17 +8372,18 @@ public final class AppListCardDtoP {
       "s\030g \003(\0132\014.ResourceDto\022\027\n\017backgroundImage" +
       "\030j \001(\t\022\014\n\004desc\030f \001(\t\022\014\n\004icon\030i \001(\t\022\r\n\005la" +
       "bel\030m \001(\t\022\"\n\014multipleApps\030k \003(\0132\014.Resour" +
-      "ceDto\022\r\n\005title\030e \001(\t\"\254\001\n\013ResourceDto\022\017\n\007" +
+      "ceDto\022\r\n\005title\030e \001(\t\"\273\001\n\013ResourceDto\022\017\n\007" +
       "appName\030\003 \001(\t\022\n\n\002bg\030! \001(\t\022\014\n\004desc\030\033 \001(\t\022" +
       "\017\n\007iconUrl\030\016 \001(\t\022\017\n\007pkgName\030\007 \001(\t\022\021\n\tsho",
       "rtDesc\030\032 \001(\t\022\020\n\010sizeDesc\030\013 \001(\t\022\013\n\003url\030\026 " +
-      "\001(\t\022\017\n\007dlCount\030\017 \001(\003\022\r\n\005grade\030\022 \001(\002\"\312\001\n\r" +
-      "AppInheritDto\022\017\n\007appName\030\003 \001(\t\022\n\n\002bg\030! \001" +
-      "(\t\022\014\n\004desc\030\033 \001(\t\022\017\n\007iconUrl\030\016 \001(\t\022\017\n\007pkg" +
-      "Name\030\007 \001(\t\022\021\n\tshortDesc\030\032 \001(\t\022\020\n\010sizeDes" +
-      "c\030\013 \001(\t\022\013\n\003url\030\026 \001(\t\022\017\n\007dlCount\030\017 \001(\003\022\r\n" +
-      "\005grade\030\022 \001(\002\022\032\n\021cooperateGameType\030\314\010 \001(\005" +
-      "B\024\n\022com.demo.serverletb\006proto3"
+      "\001(\t\022\017\n\007dlCount\030\017 \001(\003\022\r\n\005grade\030\022 \001(\002\022\r\n\005a" +
+      "ppId\030\001 \001(\003\"\312\001\n\rAppInheritDto\022\017\n\007appName\030" +
+      "\003 \001(\t\022\n\n\002bg\030! \001(\t\022\014\n\004desc\030\033 \001(\t\022\017\n\007iconU" +
+      "rl\030\016 \001(\t\022\017\n\007pkgName\030\007 \001(\t\022\021\n\tshortDesc\030\032" +
+      " \001(\t\022\020\n\010sizeDesc\030\013 \001(\t\022\013\n\003url\030\026 \001(\t\022\017\n\007d" +
+      "lCount\030\017 \001(\003\022\r\n\005grade\030\022 \001(\002\022\032\n\021cooperate" +
+      "GameType\030\314\010 \001(\005B\024\n\022com.demo.serverletb\006p" +
+      "roto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -8372,7 +8432,7 @@ public final class AppListCardDtoP {
     internal_static_ResourceDto_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ResourceDto_descriptor,
-        new java.lang.String[] { "AppName", "Bg", "Desc", "IconUrl", "PkgName", "ShortDesc", "SizeDesc", "Url", "DlCount", "Grade", });
+        new java.lang.String[] { "AppName", "Bg", "Desc", "IconUrl", "PkgName", "ShortDesc", "SizeDesc", "Url", "DlCount", "Grade", "AppId", });
     internal_static_AppInheritDto_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_AppInheritDto_fieldAccessorTable = new
