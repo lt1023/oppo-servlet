@@ -1,0 +1,94 @@
+syntax = "proto3";
+option java_package = "com.demo.serverlet";
+
+
+message CardDto{
+	   string actionParam = 4;
+	   string actionType = 3;
+	   int32  code = 1;
+	   int32  cornerLabel = 5;
+	   int32  key = 2;
+	  map<string, string> stat = 7;
+	  map<string, string> ext = 6;
+	  
+	  		   string appContextPath =104;
+		   repeated ResourceDto apps =103;
+		    string backgroundImage=106;
+		   //optional ContractAdInfoDto contractAdInfoDto = 108;
+		    string desc=102;
+		    string icon=105;
+		    string label=109;
+		   repeated ResourceDto multipleApps=107;
+		    string title=101;
+}
+
+
+message ViewLayerWrapDto {
+		   repeated CardDto cards =3;
+		int32  isEnd = 1;
+	  
+}
+
+message AppListCardDto {
+		   string appContextPath =104;
+		   repeated ResourceDto apps =103;
+		    string backgroundImage=106;
+		   //optional ContractAdInfoDto contractAdInfoDto = 108;
+		    string desc=102;
+		    string icon=105;
+		    string label=109;
+		   repeated ResourceDto multipleApps=107;
+		    string title=101;
+			
+
+	  
+}
+
+message ResourceDto{
+  string appName=3;
+  string bg=33;
+  string desc=27;
+  string iconUrl=14;
+  string pkgName=7;
+  string shortDesc=26;
+  string sizeDesc=11;
+  string url=22;
+		    int64 dlCount=15;
+		    float grade=18;
+		    int64 appId=1;
+		    int64 verCode=9;
+		    repeated string screenshots=32;
+		    string verName=8;
+			
+
+}
+
+message AppInheritDto{
+  string appName=3;
+  string bg=33;
+  string desc=27;
+  string iconUrl=14;
+  string pkgName=7;
+  string shortDesc=26;
+  string sizeDesc=11;
+  string url=22;
+		    int64 dlCount=15;
+		    float grade=18;
+	 int32 cooperateGameType=1100;
+
+}
+
+/*
+message ContractAdInfoDto{
+repeated BdCommonDto bdCommonDtos =103;
+}
+message BdCommonDto{
+  uint64 adId=1;
+ map<string, string> ext = 4;
+   string posId=2;
+   int32 type=3;
+
+}
+
+
+*/
