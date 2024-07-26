@@ -41,8 +41,8 @@ public class HelloServlet extends HttpServlet {
     private final String TYPE_RANK_BOOKING = "50004214";//预约榜
 
 
-    private static Map<String, Long> cacheTimeMap = new HashMap<>();
-    private static Map<String, List<GameBean>> cacheMap = new HashMap<>();
+    private static final Map<String, Long> cacheTimeMap = new HashMap<>();
+    private static final Map<String, List<GameBean>> cacheMap = new HashMap<>();
     private static final long REQUEST_TIME_DELAY = 10 * 60 * 1000;
 //    private static final long REQUEST_TIME_DELAY = 30 * 1000;
 
