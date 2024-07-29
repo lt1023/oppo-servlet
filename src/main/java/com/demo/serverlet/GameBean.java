@@ -20,6 +20,15 @@ public class GameBean {
     private String verName;//版本号
 
     private long verCode;//版本code
+    private String dlDesc;//下载量
+
+    public String getDlDesc() {
+        return dlDesc;
+    }
+
+    public void setDlDesc(String dlDesc) {
+        this.dlDesc = dlDesc;
+    }
 
     private List<String> screenshots;//截图
 

@@ -161,6 +161,7 @@ public class HelloServlet extends HttpServlet {
                 bean.setVerCode(app.getVerCode());
                 bean.setScreenshots(app.getScreenshotsList());
                 bean.setVerName(app.getVerName());
+                bean.setDlDesc(app.getDlDesc());
                 gameBeanList.add(bean);
             }
         }

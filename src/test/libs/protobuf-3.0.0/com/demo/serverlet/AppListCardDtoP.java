@@ -5288,6 +5288,16 @@ public final class AppListCardDtoP {
         getUrlBytes();
 
     /**
+     * <code>optional string dlDesc = 16;</code>
+     */
+    java.lang.String getDlDesc();
+    /**
+     * <code>optional string dlDesc = 16;</code>
+     */
+    com.google.protobuf.ByteString
+        getDlDescBytes();
+
+    /**
      * <code>optional int64 dlCount = 15;</code>
      */
     long getDlCount();
@@ -5356,6 +5366,7 @@ public final class AppListCardDtoP {
       shortDesc_ = "";
       sizeDesc_ = "";
       url_ = "";
+      dlDesc_ = "";
       dlCount_ = 0L;
       grade_ = 0F;
       appId_ = 0L;
@@ -5434,6 +5445,12 @@ public final class AppListCardDtoP {
               dlCount_ = input.readInt64();
               break;
             }
+            case 130: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              dlDesc_ = s;
+              break;
+            }
             case 149: {
 
               grade_ = input.readFloat();
@@ -5459,9 +5476,9 @@ public final class AppListCardDtoP {
             }
             case 258: {
               java.lang.String s = input.readStringRequireUtf8();
-              if (!((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
+              if (!((mutable_bitField0_ & 0x00002000) == 0x00002000)) {
                 screenshots_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00001000;
+                mutable_bitField0_ |= 0x00002000;
               }
               screenshots_.add(s);
               break;
@@ -5480,7 +5497,7 @@ public final class AppListCardDtoP {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
+        if (((mutable_bitField0_ & 0x00002000) == 0x00002000)) {
           screenshots_ = screenshots_.getUnmodifiableView();
         }
         makeExtensionsImmutable();
@@ -5771,6 +5788,40 @@ public final class AppListCardDtoP {
       }
     }
 
+    public static final int DLDESC_FIELD_NUMBER = 16;
+    private volatile java.lang.Object dlDesc_;
+    /**
+     * <code>optional string dlDesc = 16;</code>
+     */
+    public java.lang.String getDlDesc() {
+      java.lang.Object ref = dlDesc_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        dlDesc_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string dlDesc = 16;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDlDescBytes() {
+      java.lang.Object ref = dlDesc_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        dlDesc_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     public static final int DLCOUNT_FIELD_NUMBER = 15;
     private long dlCount_;
     /**
@@ -5906,6 +5957,9 @@ public final class AppListCardDtoP {
       if (dlCount_ != 0L) {
         output.writeInt64(15, dlCount_);
       }
+      if (!getDlDescBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 16, dlDesc_);
+      }
       if (grade_ != 0F) {
         output.writeFloat(18, grade_);
       }
@@ -5957,6 +6011,9 @@ public final class AppListCardDtoP {
       if (dlCount_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(15, dlCount_);
+      }
+      if (!getDlDescBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(16, dlDesc_);
       }
       if (grade_ != 0F) {
         size += com.google.protobuf.CodedOutputStream
@@ -6115,6 +6172,8 @@ public final class AppListCardDtoP {
 
         url_ = "";
 
+        dlDesc_ = "";
+
         dlCount_ = 0L;
 
         grade_ = 0F;
@@ -6124,7 +6183,7 @@ public final class AppListCardDtoP {
         verCode_ = 0L;
 
         screenshots_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00001000);
+        bitField0_ = (bitField0_ & ~0x00002000);
         verName_ = "";
 
         return this;
@@ -6159,13 +6218,14 @@ public final class AppListCardDtoP {
         result.shortDesc_ = shortDesc_;
         result.sizeDesc_ = sizeDesc_;
         result.url_ = url_;
+        result.dlDesc_ = dlDesc_;
         result.dlCount_ = dlCount_;
         result.grade_ = grade_;
         result.appId_ = appId_;
         result.verCode_ = verCode_;
-        if (((bitField0_ & 0x00001000) == 0x00001000)) {
+        if (((bitField0_ & 0x00002000) == 0x00002000)) {
           screenshots_ = screenshots_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00001000);
+          bitField0_ = (bitField0_ & ~0x00002000);
         }
         result.screenshots_ = screenshots_;
         result.verName_ = verName_;
@@ -6217,6 +6277,10 @@ public final class AppListCardDtoP {
           url_ = other.url_;
           onChanged();
         }
+        if (!other.getDlDesc().isEmpty()) {
+          dlDesc_ = other.dlDesc_;
+          onChanged();
+        }
         if (other.getDlCount() != 0L) {
           setDlCount(other.getDlCount());
         }
@@ -6232,7 +6296,7 @@ public final class AppListCardDtoP {
         if (!other.screenshots_.isEmpty()) {
           if (screenshots_.isEmpty()) {
             screenshots_ = other.screenshots_;
-            bitField0_ = (bitField0_ & ~0x00001000);
+            bitField0_ = (bitField0_ & ~0x00002000);
           } else {
             ensureScreenshotsIsMutable();
             screenshots_.addAll(other.screenshots_);
@@ -6822,6 +6886,75 @@ public final class AppListCardDtoP {
         return this;
       }
 
+      private java.lang.Object dlDesc_ = "";
+      /**
+       * <code>optional string dlDesc = 16;</code>
+       */
+      public java.lang.String getDlDesc() {
+        java.lang.Object ref = dlDesc_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          dlDesc_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string dlDesc = 16;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDlDescBytes() {
+        java.lang.Object ref = dlDesc_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          dlDesc_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string dlDesc = 16;</code>
+       */
+      public Builder setDlDesc(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        dlDesc_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string dlDesc = 16;</code>
+       */
+      public Builder clearDlDesc() {
+        
+        dlDesc_ = getDefaultInstance().getDlDesc();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string dlDesc = 16;</code>
+       */
+      public Builder setDlDescBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        dlDesc_ = value;
+        onChanged();
+        return this;
+      }
+
       private long dlCount_ ;
       /**
        * <code>optional int64 dlCount = 15;</code>
@@ -6928,9 +7061,9 @@ public final class AppListCardDtoP {
 
       private com.google.protobuf.LazyStringList screenshots_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       private void ensureScreenshotsIsMutable() {
-        if (!((bitField0_ & 0x00001000) == 0x00001000)) {
+        if (!((bitField0_ & 0x00002000) == 0x00002000)) {
           screenshots_ = new com.google.protobuf.LazyStringArrayList(screenshots_);
-          bitField0_ |= 0x00001000;
+          bitField0_ |= 0x00002000;
          }
       }
       /**
@@ -7001,7 +7134,7 @@ public final class AppListCardDtoP {
        */
       public Builder clearScreenshots() {
         screenshots_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00001000);
+        bitField0_ = (bitField0_ & ~0x00002000);
         onChanged();
         return this;
       }
@@ -7222,6 +7355,16 @@ public final class AppListCardDtoP {
         getUrlBytes();
 
     /**
+     * <code>optional string dlDesc = 16;</code>
+     */
+    java.lang.String getDlDesc();
+    /**
+     * <code>optional string dlDesc = 16;</code>
+     */
+    com.google.protobuf.ByteString
+        getDlDescBytes();
+
+    /**
      * <code>optional int64 dlCount = 15;</code>
      */
     long getDlCount();
@@ -7256,6 +7399,7 @@ public final class AppListCardDtoP {
       shortDesc_ = "";
       sizeDesc_ = "";
       url_ = "";
+      dlDesc_ = "";
       dlCount_ = 0L;
       grade_ = 0F;
       cooperateGameType_ = 0;
@@ -7313,6 +7457,12 @@ public final class AppListCardDtoP {
             case 120: {
 
               dlCount_ = input.readInt64();
+              break;
+            }
+            case 130: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              dlDesc_ = s;
               break;
             }
             case 149: {
@@ -7644,6 +7794,40 @@ public final class AppListCardDtoP {
       }
     }
 
+    public static final int DLDESC_FIELD_NUMBER = 16;
+    private volatile java.lang.Object dlDesc_;
+    /**
+     * <code>optional string dlDesc = 16;</code>
+     */
+    public java.lang.String getDlDesc() {
+      java.lang.Object ref = dlDesc_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        dlDesc_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string dlDesc = 16;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDlDescBytes() {
+      java.lang.Object ref = dlDesc_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        dlDesc_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     public static final int DLCOUNT_FIELD_NUMBER = 15;
     private long dlCount_;
     /**
@@ -7698,6 +7882,9 @@ public final class AppListCardDtoP {
       if (dlCount_ != 0L) {
         output.writeInt64(15, dlCount_);
       }
+      if (!getDlDescBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 16, dlDesc_);
+      }
       if (grade_ != 0F) {
         output.writeFloat(18, grade_);
       }
@@ -7738,6 +7925,9 @@ public final class AppListCardDtoP {
       if (dlCount_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(15, dlCount_);
+      }
+      if (!getDlDescBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(16, dlDesc_);
       }
       if (grade_ != 0F) {
         size += com.google.protobuf.CodedOutputStream
@@ -7892,6 +8082,8 @@ public final class AppListCardDtoP {
 
         url_ = "";
 
+        dlDesc_ = "";
+
         dlCount_ = 0L;
 
         grade_ = 0F;
@@ -7928,6 +8120,7 @@ public final class AppListCardDtoP {
         result.shortDesc_ = shortDesc_;
         result.sizeDesc_ = sizeDesc_;
         result.url_ = url_;
+        result.dlDesc_ = dlDesc_;
         result.dlCount_ = dlCount_;
         result.grade_ = grade_;
         result.cooperateGameType_ = cooperateGameType_;
@@ -7976,6 +8169,10 @@ public final class AppListCardDtoP {
         }
         if (!other.getUrl().isEmpty()) {
           url_ = other.url_;
+          onChanged();
+        }
+        if (!other.getDlDesc().isEmpty()) {
+          dlDesc_ = other.dlDesc_;
           onChanged();
         }
         if (other.getDlCount() != 0L) {
@@ -8565,6 +8762,75 @@ public final class AppListCardDtoP {
         return this;
       }
 
+      private java.lang.Object dlDesc_ = "";
+      /**
+       * <code>optional string dlDesc = 16;</code>
+       */
+      public java.lang.String getDlDesc() {
+        java.lang.Object ref = dlDesc_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          dlDesc_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string dlDesc = 16;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDlDescBytes() {
+        java.lang.Object ref = dlDesc_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          dlDesc_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string dlDesc = 16;</code>
+       */
+      public Builder setDlDesc(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        dlDesc_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string dlDesc = 16;</code>
+       */
+      public Builder clearDlDesc() {
+        
+        dlDesc_ = getDefaultInstance().getDlDesc();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string dlDesc = 16;</code>
+       */
+      public Builder setDlDescBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        dlDesc_ = value;
+        onChanged();
+        return this;
+      }
+
       private long dlCount_ ;
       /**
        * <code>optional int64 dlCount = 15;</code>
@@ -8752,19 +9018,20 @@ public final class AppListCardDtoP {
       "s\030g \003(\0132\014.ResourceDto\022\027\n\017backgroundImage" +
       "\030j \001(\t\022\014\n\004desc\030f \001(\t\022\014\n\004icon\030i \001(\t\022\r\n\005la" +
       "bel\030m \001(\t\022\"\n\014multipleApps\030k \003(\0132\014.Resour" +
-      "ceDto\022\r\n\005title\030e \001(\t\"\362\001\n\013ResourceDto\022\017\n\007" +
+      "ceDto\022\r\n\005title\030e \001(\t\"\202\002\n\013ResourceDto\022\017\n\007" +
       "appName\030\003 \001(\t\022\n\n\002bg\030! \001(\t\022\014\n\004desc\030\033 \001(\t\022" +
       "\017\n\007iconUrl\030\016 \001(\t\022\017\n\007pkgName\030\007 \001(\t\022\021\n\tsho",
       "rtDesc\030\032 \001(\t\022\020\n\010sizeDesc\030\013 \001(\t\022\013\n\003url\030\026 " +
-      "\001(\t\022\017\n\007dlCount\030\017 \001(\003\022\r\n\005grade\030\022 \001(\002\022\r\n\005a" +
-      "ppId\030\001 \001(\003\022\017\n\007verCode\030\t \001(\003\022\023\n\013screensho" +
-      "ts\030  \003(\t\022\017\n\007verName\030\010 \001(\t\"\312\001\n\rAppInherit" +
-      "Dto\022\017\n\007appName\030\003 \001(\t\022\n\n\002bg\030! \001(\t\022\014\n\004desc" +
-      "\030\033 \001(\t\022\017\n\007iconUrl\030\016 \001(\t\022\017\n\007pkgName\030\007 \001(\t" +
-      "\022\021\n\tshortDesc\030\032 \001(\t\022\020\n\010sizeDesc\030\013 \001(\t\022\013\n" +
-      "\003url\030\026 \001(\t\022\017\n\007dlCount\030\017 \001(\003\022\r\n\005grade\030\022 \001" +
-      "(\002\022\032\n\021cooperateGameType\030\314\010 \001(\005B\024\n\022com.de" +
-      "mo.serverletb\006proto3"
+      "\001(\t\022\016\n\006dlDesc\030\020 \001(\t\022\017\n\007dlCount\030\017 \001(\003\022\r\n\005" +
+      "grade\030\022 \001(\002\022\r\n\005appId\030\001 \001(\003\022\017\n\007verCode\030\t " +
+      "\001(\003\022\023\n\013screenshots\030  \003(\t\022\017\n\007verName\030\010 \001(" +
+      "\t\"\332\001\n\rAppInheritDto\022\017\n\007appName\030\003 \001(\t\022\n\n\002" +
+      "bg\030! \001(\t\022\014\n\004desc\030\033 \001(\t\022\017\n\007iconUrl\030\016 \001(\t\022" +
+      "\017\n\007pkgName\030\007 \001(\t\022\021\n\tshortDesc\030\032 \001(\t\022\020\n\010s" +
+      "izeDesc\030\013 \001(\t\022\013\n\003url\030\026 \001(\t\022\016\n\006dlDesc\030\020 \001" +
+      "(\t\022\017\n\007dlCount\030\017 \001(\003\022\r\n\005grade\030\022 \001(\002\022\032\n\021co" +
+      "operateGameType\030\314\010 \001(\005B\024\n\022com.demo.serve",
+      "rletb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -8813,13 +9080,13 @@ public final class AppListCardDtoP {
     internal_static_ResourceDto_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ResourceDto_descriptor,
-        new java.lang.String[] { "AppName", "Bg", "Desc", "IconUrl", "PkgName", "ShortDesc", "SizeDesc", "Url", "DlCount", "Grade", "AppId", "VerCode", "Screenshots", "VerName", });
+        new java.lang.String[] { "AppName", "Bg", "Desc", "IconUrl", "PkgName", "ShortDesc", "SizeDesc", "Url", "DlDesc", "DlCount", "Grade", "AppId", "VerCode", "Screenshots", "VerName", });
     internal_static_AppInheritDto_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_AppInheritDto_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_AppInheritDto_descriptor,
-        new java.lang.String[] { "AppName", "Bg", "Desc", "IconUrl", "PkgName", "ShortDesc", "SizeDesc", "Url", "DlCount", "Grade", "CooperateGameType", });
+        new java.lang.String[] { "AppName", "Bg", "Desc", "IconUrl", "PkgName", "ShortDesc", "SizeDesc", "Url", "DlDesc", "DlCount", "Grade", "CooperateGameType", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

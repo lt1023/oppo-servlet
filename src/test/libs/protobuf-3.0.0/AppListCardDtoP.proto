@@ -53,6 +53,7 @@ message ResourceDto{
   string shortDesc=26;
   string sizeDesc=11;
   string url=22;
+  string dlDesc=16;
 		    int64 dlCount=15;
 		    float grade=18;
 		    int64 appId=1;
@@ -72,9 +73,10 @@ message AppInheritDto{
   string shortDesc=26;
   string sizeDesc=11;
   string url=22;
-		    int64 dlCount=15;
-		    float grade=18;
-	 int32 cooperateGameType=1100;
+  string dlDesc=16;
+  int64 dlCount=15;
+  float grade=18;
+  int32 cooperateGameType=1100;
 
 }
 
